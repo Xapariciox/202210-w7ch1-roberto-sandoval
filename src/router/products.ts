@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { TaskController } from '../controllers/tasks.js';
+import { ProductsController } from '../controllers/products.js';
 
-export const taskRouter = Router();
+export const productRouter = Router();
 
-const controller = new TaskController();
+const controller = new ProductsController();
 
-taskRouter.get('/', controller.getAll);
-taskRouter.get('/:id', controller.get);
-taskRouter.post('/', controller.post);
-taskRouter.patch('/:id', controller.patch);
-taskRouter.delete('/:id', controller.delete);
+productRouter.get('/', controller.getAll);
+productRouter.get('/:id', controller.get);
+productRouter.post('/', controller.post);
+productRouter.patch('/:id', controller.patch);
+productRouter.delete('/:id', controller.delete);
