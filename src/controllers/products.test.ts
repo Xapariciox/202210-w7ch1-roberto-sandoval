@@ -1,8 +1,10 @@
 import { Request, Response } from 'express';
+import { ProductFileData } from '../data/products.file.data';
 import { ProductsController } from './products';
 
 describe('Given productsControler', () => {
-    const productsController = new ProductsController();
+    const model = new ProductFileData();
+    const productsController = new ProductsController(model);
     const req = {};
     const resp = {
         json: jest.fn(),

@@ -1,41 +1,39 @@
-import importData from '../server/products.json' assert { type: 'json' };
-let data = importData.Products;
+// import importData from '../server/products.json' assert { type: 'json' };
 export class ProductsController {
-    getAll(_req, resp) {
-        resp.json(data);
-        resp.end();
+    dataModel;
+    constructor(dataModel) {
+        this.dataModel = dataModel;
+    }
+    async getAll(_req, resp) {
+        const data = await this.dataModel.getAll();
+        resp.json(data).end();
     }
     get(req, resp) {
-        data = data.filter((item) => item.id === +req.params.id);
-        resp.json(data);
-        resp.end();
+        // data = data.filter((item) => item.id === +req.params.id);
+        // resp.json(data);
+        // resp.end();
     }
-    post(req, resp) {
-        const newProduct = {
-            ...req.body,
-            id: data.length + 1,
-        };
-        data.push(newProduct);
-        resp.json(newProduct);
-        resp.end();
+    async post(req, resp) {
+        const newProduct = await this.dataModel.post(req.body);
+        resp.json(newProduct).end();
     }
     patch(req, resp) {
-        const updateProduct = {
-            ...data.find((item) => item.id === +req.params.id),
-            ...req.body,
-        };
-        data[data.findIndex((item) => item.id === +req.params.id)] =
-            updateProduct;
-        resp.json(updateProduct);
-        resp.end();
+        // const updateProduct = {
+        //     ...data.find((item) => item.id === +req.params.id),
+        //     ...req.body,
+        // };
+        // data[data.findIndex((item) => item.id === +req.params.id)] =
+        //     updateProduct;
+        // resp.json(updateProduct);
+        // resp.end();
     }
     delete(req, resp, next) {
-        if (!data.find((item) => item.id === +req.params.id)) {
-            next(new Error('Not found'));
-            return;
-        }
-        data = data.filter((item) => item.id !== +req.params.id);
-        resp.json({});
-        resp.end();
+        //     if (!data.find((item) => item.id === +req.params.id)) {
+        //         next(new Error('Not found'));
+        //         return;
+        //     }
+        //     data = data.filter((item) => item.id !== +req.params.id);
+        //     resp.json({});
+        //     resp.end();
     }
 }

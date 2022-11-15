@@ -11,20 +11,18 @@ app.get('/', (req, res) => {
 });
 app.use('/product', productRouter);
 app.use((error, _req, resp, next) => {
-    console.log(error.message);
-    let status = 500;
+    console.log(error.statusCode, error.statusMessage, error.message);
+    let status = error.statusCode || 500;
     if (error.name === 'ValidationError') {
         status = 406;
     }
     else {
         //
     }
-    resp.status(status);
     const result = {
         status: status,
         type: error.name,
         error: error.message,
     };
-    resp.json(result);
-    resp.end();
+    resp.status(status).json(result).end();
 });

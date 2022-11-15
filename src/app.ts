@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import morgan from 'morgan';
+import { CustomError } from './interfaces/error.js';
 import { productRouter } from './router/products.js';
 
 export const app = express();
@@ -14,20 +15,21 @@ app.get('/', (req, res) => {
 });
 app.use('/product', productRouter);
 
-app.use((error: Error, _req: Request, resp: Response, next: NextFunction) => {
-    console.log(error.message);
-    let status = 500;
-    if (error.name === 'ValidationError') {
-        status = 406;
-    } else {
-        //
+app.use(
+    (error: CustomError, _req: Request, resp: Response, next: NextFunction) => {
+        console.log(error.statusCode, error.statusMessage, error.message);
+        let status = error.statusCode || 500;
+        if (error.name === 'ValidationError') {
+            status = 406;
+        } else {
+            //
+        }
+
+        const result = {
+            status: status,
+            type: error.name,
+            error: error.message,
+        };
+        resp.status(status).json(result).end();
     }
-    resp.status(status);
-    const result = {
-        status: status,
-        type: error.name,
-        error: error.message,
-    };
-    resp.json(result);
-    resp.end();
-});
+);

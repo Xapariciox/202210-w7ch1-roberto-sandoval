@@ -1,8 +1,10 @@
 import { Router } from 'express';
 import { ProductsController } from '../controllers/products.js';
+import { ProductFileData } from '../data/products.file.data.js';
 export const productRouter = Router();
-const controller = new ProductsController();
-productRouter.get('/', controller.getAll);
+const model = new ProductFileData();
+const controller = new ProductsController(model);
+productRouter.get('/', controller.getAll.bind(controller));
 productRouter.get('/:id', controller.get);
 productRouter.post('/', controller.post);
 productRouter.patch('/:id', controller.patch);
