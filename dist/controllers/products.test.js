@@ -8,8 +8,9 @@ describe('Given productsControler', () => {
         json: jest.fn(),
         end: jest.fn(),
     };
+    const next = {};
     test('when the method GetAll is called ', () => {
-        productsController.getAll(req, resp);
+        productsController.getAll(req, resp, next);
         expect(resp.json).toHaveBeenCalled();
         expect(resp.end).toHaveBeenCalled();
     });
@@ -19,12 +20,12 @@ describe('Given productsControler', () => {
         expect(resp.end).toHaveBeenCalled();
     });
     test('when the method Post is called ', () => {
-        productsController.post(req, resp);
+        productsController.post(req, resp, next);
         expect(resp.json).toHaveBeenCalled();
         expect(resp.end).toHaveBeenCalled();
     });
     test('when the method Patch is called ', () => {
-        productsController.patch(req, resp);
+        productsController.patch(req, resp, next);
         expect(resp.json).toHaveBeenCalled();
         expect(resp.end).toHaveBeenCalled();
     });

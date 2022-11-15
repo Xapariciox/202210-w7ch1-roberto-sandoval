@@ -1,39 +1,69 @@
+import { HTTPError } from '../interfaces/error.js';
 // import importData from '../server/products.json' assert { type: 'json' };
 export class ProductsController {
     dataModel;
     constructor(dataModel) {
         this.dataModel = dataModel;
     }
-    async getAll(_req, resp) {
-        const data = await this.dataModel.getAll();
-        resp.json(data).end();
+    async getAll(_req, resp, next) {
+        try {
+            const data = await this.dataModel.getAll();
+            resp.json(data).end();
+        }
+        catch (error) {
+            const httpError = new HTTPError(503, 'Service unavailable', error.message);
+            next(httpError);
+            return;
+        }
     }
     get(req, resp) {
         // data = data.filter((item) => item.id === +req.params.id);
         // resp.json(data);
         // resp.end();
     }
-    async post(req, resp) {
-        const newProduct = await this.dataModel.post(req.body);
-        resp.json(newProduct).end();
+    async post(req, resp, next) {
+        if (!req.body.nombre) {
+            const httpError = new HTTPError(503, 'service not available', 'nombre not included in the data');
+            next(HTTPError);
+            return;
+        }
+        try {
+            const newProduct = await this.dataModel.post(req.body);
+            resp.json(newProduct).end();
+        }
+        catch (error) {
+            const httpError = new HTTPError(503, 'service unavailable', error.message);
+            next(httpError);
+            return;
+        }
     }
-    patch(req, resp) {
-        // const updateProduct = {
-        //     ...data.find((item) => item.id === +req.params.id),
-        //     ...req.body,
-        // };
-        // data[data.findIndex((item) => item.id === +req.params.id)] =
-        //     updateProduct;
-        // resp.json(updateProduct);
-        // resp.end();
+    async patch(req, resp, next) {
+        try {
+            const updateProduct = await this.dataModel.patch(+req.params.id, req.body);
+            resp.json(updateProduct).end();
+        }
+        catch (error) {
+            if (error.message === 'Not found id') {
+                const httpError = new HTTPError(404, 'Not Found', error.message);
+                next(httpError);
+                return;
+            }
+        }
     }
-    delete(req, resp, next) {
-        //     if (!data.find((item) => item.id === +req.params.id)) {
-        //         next(new Error('Not found'));
-        //         return;
-        //     }
-        //     data = data.filter((item) => item.id !== +req.params.id);
-        //     resp.json({});
-        //     resp.end();
+    async delete(req, resp, next) {
+        try {
+            await this.dataModel.delete(+req.params.id);
+            resp.json({}).end();
+        }
+        catch (error) {
+            if (error.message === 'Not found id') {
+                const httpError = new HTTPError(404, 'Not Found', error.message);
+                next(httpError);
+                return;
+            }
+            const httpError = new HTTPError(503, 'Service unavailable', error.message);
+            next(httpError);
+            return;
+        }
     }
 }

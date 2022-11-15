@@ -46,19 +46,17 @@ export class ProductFileData implements Data<Products> {
         aData[index] = {
             ...aData[index],
             ...updateProductData,
-        }; 
+        };
         await this.#saveData(aData);
         return aData[index];
     }
 
-    async delete(id:id): Promise<void>{
-        const aData = await this.getAll()
-        const index = aData.findIndex((item)=> item.id=== id)
-        if(!index) throw new Error('Not found id')
-
-        aData.filter((item) item!== id)
-        
-        
+    async delete(id: id): Promise<void> {
+        const aData = await this.getAll();
+        const index = aData.findIndex((item) => item.id === id);
+        if (!index) throw new Error('Not found id');
+        aData.filter((item) => item.id !== id);
+        await this.#saveData(aData);
     }
 
     #createID() {
