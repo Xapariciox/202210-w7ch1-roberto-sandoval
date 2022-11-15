@@ -16,8 +16,7 @@ export class ProductFileData {
         return fs.readFile(this.dataFileURL, 'utf-8').then((data) => {
             const aData = JSON.parse(data);
             const item = aData.find((item) => item.id === id);
-            if (!item)
-                throw new Error();
+            if (!item) throw new Error();
             return item;
         });
     }
