@@ -16,7 +16,8 @@ export class ProductFileData {
         return fs.readFile(this.dataFileURL, 'utf-8').then((data) => {
             const aData = JSON.parse(data);
             const item = aData.find((item) => item.id === id);
-            if (!item) throw new Error();
+            if (!item)
+                throw new Error();
             return item;
         });
     }
@@ -29,6 +30,26 @@ export class ProductFileData {
         aData.push(finalProduct);
         await this.#saveData(aData);
         return finalProduct;
+    }
+    async patch(id, updateProductData) {
+        const aData = await this.getAll();
+        const index = aData.findIndex((item) => item.id === id);
+        if (!index)
+            throw new Error('not found id');
+        aData[index] = {
+            ...aData[index],
+            ...updateProductData,
+        };
+        await this.#saveData(aData);
+        return aData[index];
+    }
+    async delete(id) {
+        const aData = await this.getAll();
+        const index = aData.findIndex((item) => item.id === id);
+        if (!index)
+            throw new Error('Not found id');
+        aData.filter((item) => item.id !== id);
+        await this.#saveData(aData);
     }
     #createID() {
         return Math.trunc(Math.random() * 1_000_000_000);

@@ -15,7 +15,8 @@ app.use((error, _req, resp, next) => {
     let status = error.statusCode || 500;
     if (error.name === 'ValidationError') {
         status = 406;
-    } else {
+    }
+    else {
         //
     }
     const result = {
