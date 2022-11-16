@@ -9,7 +9,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Bienvenido a mi Home');
 });
-app.use('/product', productRouter);
+app.use('/products', productRouter);
 app.use((error, _req, resp, next) => {
     console.log(error.statusCode, error.statusMessage, error.message);
     let status = error.statusCode || 500;

@@ -8,7 +8,7 @@ export class ProductFileData {
     async getAll() {
         return fs
             .readFile(this.dataFileURL, 'utf-8')
-            .then((data) => JSON.parse(data));
+            .then((data) => JSON.parse(data).product);
         // const data: Array<Products> = JSON.parse()
         // return data;
     }
