@@ -25,7 +25,7 @@ export class ProductFileData {
             id: this.#createID(),
         };
         aData.push(finalProduct);
-        await this.#saveData(aData);
+        await this.#saveData({ Products: aData });
         return finalProduct;
     }
     async patch(id, updateProductData) {
@@ -37,7 +37,7 @@ export class ProductFileData {
             ...aData[index],
             ...updateProductData,
         };
-        await this.#saveData(aData);
+        await this.#saveData({ Products: aData });
         return aData[index];
     }
     async delete(id) {
@@ -46,7 +46,7 @@ export class ProductFileData {
         if (!index)
             throw new Error('Not found id');
         aData.filter((item) => item.id !== id);
-        await this.#saveData(aData);
+        await this.#saveData({ Products: aData });
     }
     #createID() {
         return Math.trunc(Math.random() * 1_000_000_000);

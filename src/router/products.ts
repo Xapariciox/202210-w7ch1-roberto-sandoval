@@ -11,7 +11,7 @@ const model: Data<Product> = new ProductFileData();
 const controller = new ProductsController(model);
 
 productRouter.get('/', controller.getAll.bind(controller));
-productRouter.get('/:id', controller.get);
-productRouter.post('/', controller.post);
-productRouter.patch('/:id', controller.patch);
-productRouter.delete('/:id', controller.delete);
+productRouter.get('/:id', controller.get.bind(controller));
+productRouter.post('/', controller.post.bind(controller));
+productRouter.patch('/:id', controller.patch.bind(controller));
+productRouter.delete('/:id', controller.delete.bind(controller));

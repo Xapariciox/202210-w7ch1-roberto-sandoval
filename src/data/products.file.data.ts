@@ -1,5 +1,6 @@
 import { Product } from '../interfaces/product.js';
 import { Data, id } from './data.js';
+import { Products } from '../interfaces/product.js';
 
 import fs from 'fs/promises';
 
@@ -29,7 +30,7 @@ export class ProductFileData implements Data<Product> {
             id: this.#createID(),
         };
         aData.push(finalProduct);
-        await this.#saveData(aData);
+        await this.#saveData({ Products: aData });
         return finalProduct;
     }
 
@@ -44,7 +45,7 @@ export class ProductFileData implements Data<Product> {
             ...aData[index],
             ...updateProductData,
         };
-        await this.#saveData(aData);
+        await this.#saveData({ Products: aData });
         return aData[index];
     }
 
@@ -53,13 +54,13 @@ export class ProductFileData implements Data<Product> {
         const index = aData.findIndex((item) => item.id === id);
         if (!index) throw new Error('Not found id');
         aData.filter((item) => item.id !== id);
-        await this.#saveData(aData);
+        await this.#saveData({ Products: aData });
     }
 
     #createID() {
         return Math.trunc(Math.random() * 1_000_000_000);
     }
-    #saveData(data: Array<Product>) {
+    #saveData(data: Products) {
         return fs.writeFile(this.dataFileURL, JSON.stringify(data));
     }
 }
