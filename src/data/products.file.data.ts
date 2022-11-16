@@ -1,6 +1,5 @@
-import { Product } from '../interfaces/product.js';
+import { Product, Products } from '../interfaces/product.js';
 import { Data, id } from './data.js';
-import { Products } from '../interfaces/product.js';
 
 import fs from 'fs/promises';
 
