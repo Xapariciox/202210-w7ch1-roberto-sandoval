@@ -11,7 +11,7 @@ export class ProductFileData implements Data<Product> {
     async getAll(): Promise<Array<Product>> {
         return fs
             .readFile(this.dataFileURL, 'utf-8')
-            .then((data) => JSON.parse(data).product as Array<Product>);
+            .then((data) => JSON.parse(data).Products as Array<Product>);
     }
     async get(id: id): Promise<Product> {
         return fs.readFile(this.dataFileURL, 'utf-8').then((data) => {

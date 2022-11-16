@@ -11,7 +11,7 @@ export class ProductsController {
             resp.json(data).end();
         }
         catch (error) {
-            const httpError = new HTTPError(503, 'Service unavailable', error.message);
+            const httpError = new HTTPError(503, 'Service unavailable Sorry', error.message);
             next(httpError);
             return;
         }
