@@ -1,5 +1,4 @@
 import fs from 'fs/promises';
-// const dataFileURL = 'src/server/products.json';
 export class ProductFileData {
     dataFileURL;
     constructor() {
@@ -9,8 +8,6 @@ export class ProductFileData {
         return fs
             .readFile(this.dataFileURL, 'utf-8')
             .then((data) => JSON.parse(data).product);
-        // const data: Array<Products> = JSON.parse()
-        // return data;
     }
     async get(id) {
         return fs.readFile(this.dataFileURL, 'utf-8').then((data) => {
