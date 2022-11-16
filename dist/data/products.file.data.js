@@ -7,7 +7,7 @@ export class ProductFileData {
     async getAll() {
         return fs
             .readFile(this.dataFileURL, 'utf-8')
-            .then((data) => JSON.parse(data).product);
+            .then((data) => JSON.parse(data).Products);
     }
     async get(id) {
         return fs.readFile(this.dataFileURL, 'utf-8').then((data) => {

@@ -12,4 +12,3 @@ export class HTTPError extends Error {
         this.name = 'HTTPError';
     }
 }
-new HTTPError(500, 'Bad', 'fuera de servicio');
