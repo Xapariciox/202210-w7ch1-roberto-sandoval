@@ -15,7 +15,7 @@ export class ProductsController {
         } catch (error) {
             const httpError = new HTTPError(
                 503,
-                'Service unavailable',
+                'Service unavailable Sorry',
                 (error as Error).message
             );
             next(httpError);
