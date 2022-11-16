@@ -1,12 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
-import { product } from '../interfaces/product.js';
+import { Product } from '../interfaces/product.js';
 import { Data } from '../data/data.js';
 import { HTTPError } from '../interfaces/error.js';
 
 // import importData from '../server/products.json' assert { type: 'json' };
 
 export class ProductsController {
-    constructor(public dataModel: Data<product>) {}
+    constructor(public dataModel: Data<Product>) {}
 
     async getAll(_req: Request, resp: Response, next: NextFunction) {
         try {
@@ -24,9 +24,7 @@ export class ProductsController {
     }
 
     get(_req: Request, _resp: Response) {
-        // data = data.filter((item) => item.id === +req.params.id);
-        // resp.json(data);
-        // resp.end();
+        //
     }
     async post(req: Request, resp: Response, next: NextFunction) {
         if (!req.body.nombre) {
@@ -35,7 +33,7 @@ export class ProductsController {
                 'service not available',
                 'nombre not included in the data'
             );
-            next(HTTPError);
+            next(httpError);
             return;
         }
         try {
@@ -75,7 +73,7 @@ export class ProductsController {
             await this.dataModel.delete(+req.params.id);
             resp.json({}).end();
         } catch (error) {
-            if ((error as Error).message === 'Not found id') {
+            if ((error as Error).message === 'Not found ids') {
                 const httpError = new HTTPError(
                     404,
                     'Not Found',

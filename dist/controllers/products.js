@@ -17,14 +17,12 @@ export class ProductsController {
         }
     }
     get(_req, _resp) {
-        // data = data.filter((item) => item.id === +req.params.id);
-        // resp.json(data);
-        // resp.end();
+        //
     }
     async post(req, resp, next) {
         if (!req.body.nombre) {
             const httpError = new HTTPError(503, 'service not available', 'nombre not included in the data');
-            next(HTTPError);
+            next(httpError);
             return;
         }
         try {
@@ -56,7 +54,7 @@ export class ProductsController {
             resp.json({}).end();
         }
         catch (error) {
-            if (error.message === 'Not found id') {
+            if (error.message === 'Not found ids') {
                 const httpError = new HTTPError(404, 'Not Found', error.message);
                 next(httpError);
                 return;

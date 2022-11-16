@@ -6,10 +6,5 @@ describe('Given', () => {
     });
     test('should first', () => {
         expect(error).toBeInstanceOf(Error);
-        // faltan
-        //faltan
-        // faltan
-        //faltan
-        //faltan
     });
 });
