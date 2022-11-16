@@ -16,7 +16,7 @@ export class ProductsController {
             return;
         }
     }
-    get(req, resp) {
+    get(_req, _resp) {
         // data = data.filter((item) => item.id === +req.params.id);
         // resp.json(data);
         // resp.end();

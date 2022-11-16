@@ -1,12 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
-import { Products } from '../interfaces/product.js';
-import { Data, Data as DataModel } from '../data/data.js';
+import { product } from '../interfaces/product.js';
+import { Data } from '../data/data.js';
 import { HTTPError } from '../interfaces/error.js';
 
 // import importData from '../server/products.json' assert { type: 'json' };
 
 export class ProductsController {
-    constructor(public dataModel: Data<Products>) {}
+    constructor(public dataModel: Data<product>) {}
 
     async getAll(_req: Request, resp: Response, next: NextFunction) {
         try {
@@ -23,7 +23,7 @@ export class ProductsController {
         }
     }
 
-    get(req: Request, resp: Response) {
+    get(_req: Request, _resp: Response) {
         // data = data.filter((item) => item.id === +req.params.id);
         // resp.json(data);
         // resp.end();

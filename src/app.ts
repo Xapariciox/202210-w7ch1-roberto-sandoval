@@ -13,7 +13,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Bienvenido a mi Home');
 });
-app.use('/product', productRouter);
+app.use('/products', productRouter);
 
 app.use(
     (error: CustomError, _req: Request, resp: Response, next: NextFunction) => {
