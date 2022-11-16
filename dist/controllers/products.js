@@ -54,7 +54,7 @@ export class ProductsController {
             resp.json({}).end();
         }
         catch (error) {
-            if (error.message === 'Not found id') {
+            if (error.message === 'Not found ids') {
                 const httpError = new HTTPError(404, 'Not Found', error.message);
                 next(httpError);
                 return;

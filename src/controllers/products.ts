@@ -73,7 +73,7 @@ export class ProductsController {
             await this.dataModel.delete(+req.params.id);
             resp.json({}).end();
         } catch (error) {
-            if ((error as Error).message === 'Not found id') {
+            if ((error as Error).message === 'Not found ids') {
                 const httpError = new HTTPError(
                     404,
                     'Not Found',
