@@ -5,6 +5,7 @@ import { CustomError } from './interfaces/error.js';
 import { productRouter } from './router/products.js';
 
 export const app = express();
+app.disable('x-powered-by');
 
 app.use(morgan('dev'));
 app.use(cors());

@@ -6,3 +6,7 @@ export interface Product {
     latitude: number;
     longitude: number;
 }
+
+export type Products = {
+    Products: Array<Product>;
+};
