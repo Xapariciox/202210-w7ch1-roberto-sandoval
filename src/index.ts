@@ -2,9 +2,9 @@ import http from 'http';
 import { app } from './app.js';
 
 import { CustomError } from './interfaces/error';
-import { dbConnect } from './db.conect.js';
+import { dbConnect } from './db.connect.js';
 
-const port = process.env.PORT || 3300;
+const port = 3300;
 const server = http.createServer(app);
 server.on('listening', () => {
     const addr = server.address();
