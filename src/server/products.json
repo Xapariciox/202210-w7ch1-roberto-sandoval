@@ -1,1 +1,164 @@
-{"Products":[{"id":1,"address":"Calle Juan Martín","type":"frutería","nombre":"Lola Castro Frutas","latitude":37.880273,"longitude":-4.792098},{"id":2,"address":"Calle Pepe Cruz","type":"supermercado","nombre":"Ultramarinos Lolo Castro","latitude":37.862323,"longitude":-4.77812},{"id":3,"address":"Avenida de la Cruz","type":"pescadería","nombre":"Pescados El Boquerón","latitude":37.856273,"longitude":-4.776992},{"id":4,"address":"Avenida de la Cruz","type":"pescadería","nombre":"Pescados El Boquerón","latitude":37.856273,"longitude":-4.776992},{"id":5,"address":"Funciono!","type":"jjjj","nombre":"Ultramarinos Lolo Castroo","latitude":37.86323,"longitude":-4.7552},{"address":"Callee Ppe Cruz","type":"jjjj","nombre":"Ultramarinos Lolo Castroo","latitude":37.86323,"longitude":-4.7712,"id":296967793},{"address":"Callee Ppe Cruz","type":"jjjj","nombre":"Ultramarinos Lolo Castroo","latitude":37.86323,"longitude":-4.7552,"id":894056388}]}
+{
+    "Products": [
+        {
+            "id": 1,
+            "address": "Calle Juan Martín",
+            "type": "frutería",
+            "nombre": "Lola Castro Frutas",
+            "latitude": 37.880273,
+            "longitude": -4.792098
+        },
+        {
+            "id": 2,
+            "address": "Calle Pepe Cruz",
+            "type": "supermercado",
+            "nombre": "Ultramarinos Lolo Castro",
+            "latitude": 37.862323,
+            "longitude": -4.77812
+        },
+        {
+            "id": 3,
+            "address": "Avenida de la Cruz",
+            "type": "pescadería",
+            "nombre": "Pescados El Boquerón",
+            "latitude": 37.856273,
+            "longitude": -4.776992
+        },
+        {
+            "id": 4,
+            "address": "Avenida de la Cruz",
+            "type": "pescadería",
+            "nombre": "Pescados El Boquerón",
+            "latitude": 37.856273,
+            "longitude": -4.776992
+        },
+        {
+            "id": 5,
+            "address": "Funciono!",
+            "type": "jjjj",
+            "nombre": "Ultramarinos Lolo Castroo",
+            "latitude": 37.86323,
+            "longitude": -4.7552
+        },
+        {
+            "address": "Callee Ppe Cruz",
+            "type": "jjjj",
+            "nombre": "Ultramarinos Lolo Castroo",
+            "latitude": 37.86323,
+            "longitude": -4.7712,
+            "id": 296967793
+        },
+        {
+            "address": "Callee Ppe Cruz",
+            "type": "jjjj",
+            "nombre": "Ultramarinos Lolo Castroo",
+            "latitude": 37.86323,
+            "longitude": -4.7552,
+            "id": 894056388
+        }
+    ],
+    "sneakers": [
+        {
+            "id": 1,
+            "name": "NIKECRAFT GENERAL PURPOSE",
+            "offer": true,
+            "price": 99.99,
+            "brand": "Nike",
+            "color": "Moztaza",
+            "image": "https://media.revistagq.com/photos/6313012e22595362b0c1df73/master/w_1920%2Cc_limit/TS_GPS_Sulpher_Pair_original.jpg",
+            "Description": "The NikeCraft General Purpose, also known as the Tom Sachs Nikes, do not stop giving us joy. In recent months, three different colors of this spectacular utilitarian and minimalist model have been put on sale: a beautiful off-white color, in mustard and a very attractive white and blue. These are perfect sneakers for fall and we recommend wearing them with jogger pants."
+        },
+        {
+            "id": 2,
+            "name": "ADIDAS YEEZY BOOST 350 V2",
+            "offer": false,
+            "price": 120,
+            "brand": "Nike",
+            "color": "Gris",
+            "image": "https://media.revistagq.com/photos/6313017122595362b0c1df75/master/w_1920%2Cc_limit/adidas-yeezy-boost-350-v2-slate-0.jpg",
+            "Description": "Originally identified as a Reverse Oreo colorway, the new look noticeably inverts one of the YEEZY BOOST 350 V2's original colorways with its beige colorway contrasted by a black side stripe. Typical sneaker construction makes a return as a Primeknit upper is supported by a full-length BOOST midsole that's covered by a translucent sole unit. Lastly, while some looks have favored a white stripe, the classic SPLY-350 text appears in the shoe's shade of beige on the side stripe."
+        },
+        {
+            "id": 3,
+            "name": "NIKE ZOOM CORTEZ X SACAI WHITE AND UNIVERSITY RED",
+            "offer": false,
+            "price": 120,
+            "brand": "Nike",
+            "color": "White and red",
+            "image": "https://media.revistagq.com/photos/6313035442bb0fbbf38467fe/master/w_1920%2Cc_limit/DQ0581-100_274327722_D_A_1X1_110767.PNG",
+            "Description": "Tras tener un éxito bestial con las Sacai x Nike LDV Waffle,  con las Sacai x Nike Vaporwaffle y con las Sacai x Nike Blazer Low ahora la marca japonesa que comanda Chitose Abe se atreve a remezclar uno de los grandes iconos de la compañía del Swoosh, las Nike Cortez. "
+        },
+        {
+            "id": 4,
+            "name": "ADIDAS 4DFWD -2022-",
+            "offer": false,
+            "price": 150,
+            "brand": "Nike",
+            "color": "Gris and Black",
+            "image": "https://media.revistagq.com/photos/63048e6c87b02a80718144d6/master/w_1920%2Cc_limit/adidas%25204DFWD.jpg",
+            "Description": "The 2022 adidas 4DFWD is the second generation of the adidas 4DFWD, the first mass-market running shoe to feature a 3D printed midsole. What advantages do these shoes have over other running models with a foam midsole? The main one is that this model takes advantage of the vertical energy of the runner like no other and propels him forward."
+        },
+        {
+            "id": 5,
+            "name": "NIKE AIR MAX 1 DE PATTA ",
+            "offer": false,
+            "price": 300,
+            "brand": "Nike",
+            "color": "White",
+            "image": "https://media.revistagq.com/photos/63130403b36065490c7c5d19/master/w_1920%2Cc_limit/patta-nike-air-max-1-zapatillas-blancas.jpeg",
+            "Description": "After releasing four highly anticipated colorways beginning late last year, Patta and Nike are joining forces once again for another Air Max 1 colorway in White. The upcoming pairs were first seen earlier this year as a commemorative 1-of-1 iteration remembering Patta co-founder Edson Sabjo's son who passed away in 2021."
+        }
+    ],
+    "socks": [
+        {
+            "id": 1,
+            "name": "white socks",
+            "offer": true,
+            "brand": "adidas",
+            "price": 20,
+            "color": "White",
+            "image": "https://media.revistagq.com/photos/63089209ad6cc5e53f34100b/master/w_1920%2Cc_limit/81pFFCZm8fL._AC_UX679_.jpg",
+            "Description": "Among a man's repertoire of socks, white sports aesthetics cannot be missing, the ones that have become more popular after the rise of Adidas streetwear. They're the ones you'll wear with loafers (Michael Jackson style) or even flip-flops (Mahmood style)."
+        },
+        {
+            "id": 2,
+            "name": "black socks",
+            "offer": false,
+            "brand": "carb",
+            "price": 30,
+            "color": "black",
+            "image": "https://media.revistagq.com/photos/6308948a8d626ab3d91613e2/master/w_1920%2Cc_limit/843227318199500_WWW_967x1200.jpg",
+            "Description": "Among a man's repertoire of socks, white sports aesthetics cannot be missing, the ones that have become more popular after the rise of Adidas streetwear. They're the ones you'll wear with loafers (Michael Jackson style) or even flip-flops (Mahmood style)."
+        },
+        {
+            "id": 3,
+            "name": "Socks Rombos",
+            "offer": false,
+            "brand": "Sf",
+            "price": 50,
+            "color": "Brown light",
+            "image": "https://media.revistagq.com/photos/6308955022595362b0c1ddad/master/w_1920%2Cc_limit/P_408395334FM.jpg",
+            "Description": "Now that the preppy aesthetic has become established in our wardrobes, men's socks are printed with the same diamond pattern that characterizes the vests of the young men of the Ivy League. In a neutral color or a more striking color, you have the last word.."
+        },
+        {
+            "id": 4,
+            "name": "white socks",
+            "offer": true,
+            "brand": "Mpaa",
+            "price": 10,
+            "color": "Brown",
+            "image": "https://media.revistagq.com/photos/630896fdad6cc5e53f341011/master/w_1920%2Cc_limit/81DeqXd0eQL._AC_UY741_.jpg",
+            "Description": "Although blacks are the kings of the wardrobe, brown men's socks are also a must if you are going to wear shoes in this same tone.."
+        },
+        {
+            "id": 5,
+            "name": "Green socks",
+            "offer": false,
+            "brand": "Nike",
+            "price": 80,
+            "color": "Green",
+            "image": "https://media.revistagq.com/photos/63089942ad6cc5e53f341015/master/w_1920%2Cc_limit/18482397_39653332_1000.jpg",
+            "Description": "Only the most trend-savvy men (and the most daring) would dare to wear socks invaded by a logo. Are you one of them? If it is a 'yes', a tip before you launch: let them become the focal point of your look, so accompany them with basic garments.."
+        }
+    ]
+}
