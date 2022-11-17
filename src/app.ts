@@ -7,10 +7,6 @@ import { sneakerRouter } from './router/sneakers.js';
 export const app = express();
 app.disable('x-powered-by');
 
-const corsOption = {
-    origin: '*',
-};
-
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
