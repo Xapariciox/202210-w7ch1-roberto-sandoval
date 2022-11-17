@@ -1,19 +1,13 @@
 import { Router } from 'express';
 import { SneakersController } from '../controllers/sneakers.js';
+import { SneakerRepository } from '../data/snaeker.repository.js';
 
+export const sneakerRouter = Router();
 
-import { Data } from '../data/data.js';
-import { ProductFileData } from '../data/products.file.data.js';
-import { Sneaker } from '../interfaces/product.js';
+const controller = new SneakersController(new SneakerRepository());
 
-
-export const productRouter = Router();
-const model: Data<Sneaker> = new ProductFileData();
-
-const controller = new SneakersController(model);
-
-productRouter.get('/', controller.getAll.bind(controller));
-productRouter.get('/:id', controller.get.bind(controller));
-productRouter.post('/', controller.post.bind(controller));
-productRouter.patch('/:id', controller.patch.bind(controller));
-productRouter.delete('/:id', controller.delete.bind(controller));
+sneakerRouter.get('/', controller.getAll.bind(controller));
+sneakerRouter.get('/:id', controller.get.bind(controller));
+sneakerRouter.post('/', controller.post.bind(controller));
+sneakerRouter.patch('/:id', controller.patch.bind(controller));
+sneakerRouter.delete('/:id', controller.delete.bind(controller));

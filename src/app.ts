@@ -2,7 +2,7 @@ import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import morgan from 'morgan';
 import { CustomError } from './interfaces/error.js';
-import { productRouter } from './router/products.js';
+import { sneakerRouter } from './router/sneakers.js';
 
 export const app = express();
 app.disable('x-powered-by');
@@ -24,7 +24,8 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
     res.send('Bienvenido a mi Home');
 });
-app.use('/products', productRouter);
+
+app.use('/sneakers', sneakerRouter);
 
 app.use(
     (error: CustomError, _req: Request, resp: Response, next: NextFunction) => {
