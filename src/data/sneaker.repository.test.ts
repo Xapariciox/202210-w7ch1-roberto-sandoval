@@ -21,7 +21,7 @@ const mockData = [
         color: 'blanco',
         image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.es%2FNIKE-Force-Zapatillas-Baloncesto-Unisex%2Fdp%2FB0BLSQ9D5Y&psig=AOvVaw3qbM6qUoZo37xCbBhxDDUk&ust=1668799286641000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLCRuPf3tfsCFQAAAAAdAAAAABAG',
         Description: 'cool',
-        id: '637691a17fe2287bd9a7a041',
+        id: '637691a17fe2287bd9a7041',
     },
 ];
 
