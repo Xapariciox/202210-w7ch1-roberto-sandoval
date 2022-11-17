@@ -7,9 +7,19 @@ import { productRouter } from './router/products.js';
 export const app = express();
 app.disable('x-powered-by');
 
+const corsOption = {
+    origin: '*',
+};
+
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
+
+app.use((req, res, next) => {
+    const origin = req.header('Origin') || '*';
+    res.setHeader('Access-Control-Allow-Origin', origin as string);
+    next();
+});
 
 app.get('/', (req, res) => {
     res.send('Bienvenido a mi Home');

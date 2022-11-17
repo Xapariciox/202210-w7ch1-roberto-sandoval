@@ -3,15 +3,13 @@ import { Product } from '../interfaces/product.js';
 import { Data } from '../data/data.js';
 import { HTTPError } from '../interfaces/error.js';
 
-// import importData from '../server/products.json' assert { type: 'json' };
-
 export class ProductsController {
-    constructor(public dataModel: Data<Product>) {}
+    constructor(public repository: Data<Product>) {}
 
     async getAll(_req: Request, resp: Response, next: NextFunction) {
         try {
-            const data = await this.dataModel.getAll();
-            resp.json(data).end();
+            const data = await this.repository.getAll();
+            resp.json({ data });
         } catch (error) {
             const httpError = new HTTPError(
                 503,
@@ -23,22 +21,19 @@ export class ProductsController {
         }
     }
 
-    get(_req: Request, _resp: Response) {
-        //
-    }
-    async post(req: Request, resp: Response, next: NextFunction) {
-        if (!req.body.nombre) {
-            const httpError = new HTTPError(
-                503,
-                'service not available',
-                'nombre not included in the data'
-            );
-            next(httpError);
+    async get(req: Request, resp: Response, next: NextFunction) {
+        try {
+            const data = await this.repository.get(+req.params.id);
+            resp.json({ data });
+        } catch (error) {
+            next(this.#createHttpError(error as Error));
             return;
         }
+    }
+    async post(req: Request, resp: Response, next: NextFunction) {
         try {
-            const newProduct = await this.dataModel.post(req.body);
-            resp.json(newProduct).end();
+            const newProduct = await this.repository.post(req.body);
+            resp.json({ newProduct }).end();
         } catch (error) {
             const httpError = new HTTPError(
                 503,
@@ -46,49 +41,41 @@ export class ProductsController {
                 (error as Error).message
             );
             next(httpError);
-            return;
         }
     }
     async patch(req: Request, resp: Response, next: NextFunction) {
         try {
-            const updateProduct = await this.dataModel.patch(
+            const updateProduct = await this.repository.patch(
                 +req.params.id,
                 req.body
             );
-            resp.json(updateProduct).end();
+            resp.json(updateProduct);
         } catch (error) {
-            if ((error as Error).message === 'Not found id') {
-                const httpError = new HTTPError(
-                    404,
-                    'Not Found',
-                    (error as Error).message
-                );
-                next(httpError);
-                return;
-            }
+            next(this.#createHttpError);
         }
     }
     async delete(req: Request, resp: Response, next: NextFunction) {
         try {
-            await this.dataModel.delete(+req.params.id);
-            resp.json({}).end();
+            await this.repository.delete(+req.params.id);
+            resp.json({});
         } catch (error) {
-            if ((error as Error).message === 'Not found ids') {
-                const httpError = new HTTPError(
-                    404,
-                    'Not Found',
-                    (error as Error).message
-                );
-                next(httpError);
-                return;
-            }
+            next(this.#createHttpError);
+        }
+    }
+    #createHttpError(error: Error) {
+        if ((error as Error).message === 'Not found id') {
             const httpError = new HTTPError(
-                503,
-                'Service unavailable',
+                404,
+                'Not Found',
                 (error as Error).message
             );
-            next(httpError);
-            return;
+            return httpError;
         }
+        const httpError = new HTTPError(
+            503,
+            'Service unavailable',
+            (error as Error).message
+        );
+        return httpError;
     }
 }

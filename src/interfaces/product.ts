@@ -10,3 +10,13 @@ export interface Product {
 export type Products = {
     Products: Array<Product>;
 };
+
+export interface Sneaker {
+    name: string;
+    offer: boolean;
+    brand: string;
+    price: number;
+    color: string;
+    image: string;
+    Description: string;
+}
