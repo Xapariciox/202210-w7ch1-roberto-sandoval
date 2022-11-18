@@ -4,7 +4,7 @@ import { app } from './app.js';
 import { CustomError } from './interfaces/error';
 import { dbConnect } from './db.connect.js';
 
-const port = 3300 || 4000;
+const port = process.env.PORT || 4000;
 const server = http.createServer(app);
 server.on('listening', () => {
     const addr = server.address();
