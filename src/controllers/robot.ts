@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import { Data } from '../data/data.js';
 import { HTTPError } from '../interfaces/error.js';
-import { Sneaker } from '../interfaces/product.js';
+import { Robot } from '../entities/robot';
 
-export class SneakersController {
-    constructor(public repository: Data<Sneaker>) {}
+export class RobotController {
+    constructor(public repository: Data<Robot>) {}
 
     async getAll(_req: Request, resp: Response, next: NextFunction) {
         try {
@@ -17,7 +17,6 @@ export class SneakersController {
                 (error as Error).message
             );
             next(httpError);
-            return;
         }
     }
 
@@ -32,8 +31,8 @@ export class SneakersController {
     }
     async post(req: Request, resp: Response, next: NextFunction) {
         try {
-            const newSneaker = await this.repository.post(req.body);
-            resp.json({ newSneaker }).end();
+            const newRobot = await this.repository.post(req.body);
+            resp.json({ newRobot });
         } catch (error) {
             const httpError = new HTTPError(
                 503,
@@ -45,13 +44,13 @@ export class SneakersController {
     }
     async patch(req: Request, resp: Response, next: NextFunction) {
         try {
-            const updateSneaker = await this.repository.patch(
+            const updateRobot = await this.repository.patch(
                 req.params.id,
                 req.body
             );
-            resp.json(updateSneaker);
+            resp.json({ updateRobot });
         } catch (error) {
-            next(this.#createHttpError);
+            next(this.#createHttpError(error as Error));
         }
     }
     async delete(req: Request, resp: Response, next: NextFunction) {
@@ -59,7 +58,7 @@ export class SneakersController {
             await this.repository.delete(req.params.id);
             resp.json({});
         } catch (error) {
-            next(this.#createHttpError);
+            next(this.#createHttpError(error as Error));
         }
     }
     #createHttpError(error: Error) {
